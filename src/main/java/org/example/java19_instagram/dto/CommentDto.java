@@ -18,5 +18,5 @@ public class CommentDto {
     private String content;
     private Timestamp createdAt;
 
-    // Геттеры и сеттеры
+
 }

@@ -41,8 +41,8 @@ public class PostImageService {
         return fileService.getOutputFile(fileName, SUB_DIR, MediaType.IMAGE_JPEG);
     }
 
-    public ResponseEntity<?> getImageByUserId(Long userId) {
-        var optionalUserImage = postImageDao.findImageByUserId(userId);
+    public ResponseEntity<?> getImageByPostId(Long userId) {
+        var optionalUserImage = postImageDao.findImageByPostId(userId);
         if (optionalUserImage.isEmpty()) {
             return fileService.getOutputFile("no_image.jpeg", SUB_DIR, MediaType.IMAGE_JPEG);
         }

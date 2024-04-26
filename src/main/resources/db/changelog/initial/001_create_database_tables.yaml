@@ -32,6 +32,8 @@ databaseChangeLog:
               - column:
                   name: avatar
                   type: varchar(255)
+                  constraints:
+                    nullable: true
               - column:
                   name: name
                   type: varchar(255)

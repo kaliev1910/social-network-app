@@ -1,5 +1,7 @@
 package org.example.java19_instagram.dao;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.example.java19_instagram.models.PostImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
@@ -14,15 +16,17 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Component
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class PostImageDao {
-    @Autowired
+
     protected JdbcTemplate jdbcTemplate;
 
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     KeyHolder keyHolder;
 
     public void save(PostImage postImage) {
-        String sql = "insert into post_images (user_id, file_name) " +
+        String sql = "insert into post_images (POST_ID, file_name) " +
                 "values ( ?, ? )";
         jdbcTemplate.update(sql, postImage.getPostId(), postImage.getFileName());
     }
@@ -37,7 +41,7 @@ public class PostImageDao {
         jdbcTemplate.update(con -> {
             PostImage ui = (PostImage) obj;
             PreparedStatement ps = con.prepareStatement(
-                    "insert into post_images(user_id, file_name) values (?, ?)",
+                    "insert into post_images(POST_ID, file_name) values (?, ?)",
                     new String[]{"id"}
             );
             ps.setLong(1, ui.getPostId());
@@ -48,14 +52,14 @@ public class PostImageDao {
     }
 
 
-    public void delete(Long id) {
+    public void delete(Long postId) {
         jdbcTemplate.update(
-                "delete from post_images where user_id = ?;",
-                id
+                "delete from post_images where POST_ID = ?;",
+                postId
         );
     }
 
-    public Optional<PostImage> findImageByUserId(Long movieId) {
+    public Optional<PostImage> findImageByPostId(Long postId) {
         return Optional.ofNullable(
                 DataAccessUtils.singleResult(
                         jdbcTemplate.query(
@@ -65,7 +69,7 @@ public class PostImageDao {
                                         where post_id = ?;
                                         """,
                                 new BeanPropertyRowMapper<>(PostImage.class),
-                                movieId
+                                postId
                         )
                 )
         );

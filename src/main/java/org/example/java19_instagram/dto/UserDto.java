@@ -16,7 +16,6 @@ public class UserDto {
     private String password;
     private String avatar;
     private String name;
-    private boolean enabled;
     private String bio;
 
 }
