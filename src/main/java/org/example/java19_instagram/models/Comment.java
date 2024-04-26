@@ -5,18 +5,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.sql.Timestamp;
+
 @Data
 @Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class User {
+public class Comment {
+    private int commentId;
+    private int postId;
     private int userId;
-    private String username;
-    private String email;
-    private String password;
-    private String avatar;
-    private String name;
-    private boolean enabled;
-    private String bio;
+    private String content;
+    private Timestamp createdAt;
 
+    // Геттеры и сеттеры
 }

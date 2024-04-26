@@ -1,0 +1,285 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-users
+      author: you
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: avatar
+                  type: varchar(255)
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: enabled
+                  type: boolean
+                  defaultValue: true
+              - column:
+                  name: bio
+                  type: text
+
+  - changeSet:
+      id: create-table-posts
+      author: you
+      changes:
+        - createTable:
+            tableName: posts
+            columns:
+              - column:
+                  name: post_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: int
+              - column:
+                  name: file_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: likes_count
+                  type: int
+                  defaultValue: 0
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+            foreignKeys:
+              - foreignKey:
+                  name: fk_user_id
+                  baseColumnName: user_id
+                  baseTableName: posts
+                  referencedColumnName: user_id
+                  referencedTableName: users
+                  onDelete: CASCADE
+
+  - changeSet:
+      id: create-table-comments
+      author: you
+      changes:
+        - createTable:
+            tableName: comments
+            columns:
+              - column:
+                  name: comment_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: post_id
+                  type: int
+              - column:
+                  name: user_id
+                  type: int
+              - column:
+                  name: content
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+            foreignKeys:
+              - foreignKey:
+                  name: fk_post_id
+                  baseColumnName: post_id
+                  baseTableName: comments
+                  referencedColumnName: post_id
+                  referencedTableName: posts
+                  onDelete: CASCADE
+              - foreignKey:
+                  name: fk_user_id
+                  baseColumnName: user_id
+                  baseTableName: comments
+                  referencedColumnName: user_id
+                  referencedTableName: users
+                  onDelete: CASCADE
+
+  - changeSet:
+      id: create-table-subscriptions
+      author: you
+      changes:
+        - createTable:
+            tableName: subscriptions
+            columns:
+              - column:
+                  name: subscription_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: follower_id
+                  type: int
+              - column:
+                  name: followed_id
+                  type: int
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+            foreignKeys:
+              - foreignKey:
+                  name: fk_follower_id
+                  baseColumnName: follower_id
+                  baseTableName: subscriptions
+                  referencedColumnName: user_id
+                  referencedTableName: users
+                  onDelete: CASCADE
+              - foreignKey:
+                  name: fk_followed_id
+                  baseColumnName: followed_id
+                  baseTableName: subscriptions
+                  referencedColumnName: user_id
+                  referencedTableName: users
+                  onDelete: CASCADE
+
+  - changeSet:
+      id: create-table-likes
+      author: you
+      changes:
+        - createTable:
+            tableName: likes
+            columns:
+              - column:
+                  name: like_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: int
+              - column:
+                  name: post_id
+                  type: int
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: 'CURRENT_TIMESTAMP'
+            foreignKeys:
+              - foreignKey:
+                  name: fk_user_id
+                  baseColumnName: user_id
+                  baseTableName: likes
+                  referencedColumnName: user_id
+                  referencedTableName: users
+                  onDelete: CASCADE
+              - foreignKey:
+                  name: fk_post_id
+                  baseColumnName: post_id
+                  baseTableName: likes
+                  referencedColumnName: post_id
+                  referencedTableName: posts
+                  onDelete: CASCADE
+
+  - changeSet:
+      id: create_table_authorities
+      author: kaliev1910
+      changes:
+        - createTable:
+            tableName: authorities
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: authority
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create_table_user_authorities
+      author: kaliev1910
+      changes:
+        - createTable:
+            tableName: user_authorities
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_ur_user_id
+                    references: users(user_id)
+              - column:
+                  name: authority_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_ur_role_id
+                    references: authorities(id)
+  - changeSet:
+      id: create_table_post_images
+      author: kaliev1910
+      changes:
+        - createTable:
+            tableName: post_images
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: post_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: file_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+            foreignKeyConstraints:
+              - foreignKeyConstraint:
+                  name: mfk_post_id
+                  baseTableName: post_images
+                  baseColumnNames: post_id
+                  referencedTableName: posts
+                  referencedColumnNames: post_id

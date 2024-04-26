@@ -1,4 +1,4 @@
-package org.example.java19_instagram.models;
+package org.example.java19_instagram.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class User {
+public class UserDto {
     private int userId;
     private String username;
     private String email;
