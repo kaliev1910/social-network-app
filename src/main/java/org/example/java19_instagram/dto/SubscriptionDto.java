@@ -13,8 +13,8 @@ import java.sql.Timestamp;
 @RequiredArgsConstructor
 public class SubscriptionDto {
     private int subscriptionId;
+    private int userId;
     private int followerId;
-    private int followedId;
     private Timestamp createdAt;
 
 }

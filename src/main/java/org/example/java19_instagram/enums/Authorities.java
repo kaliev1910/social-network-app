@@ -1,6 +1,6 @@
 package org.example.java19_instagram.enums;
 
-public enum Autorities {
+public enum Authorities {
     POST,
     EDIT,
     DELETE

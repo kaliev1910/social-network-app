@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UserService {
     int signUp(UserDto user);
 
-    UserDto getUserByUsername(String username);
+    Optional<UserDto> getUserByUsername(String username);
 
     UserDto getUserById(int id);
 

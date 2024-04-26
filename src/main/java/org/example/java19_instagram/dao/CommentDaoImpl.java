@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 @Component
 public class CommentDaoImpl implements CommentDao {
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public CommentDaoImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -44,5 +44,10 @@ public class CommentDaoImpl implements CommentDao {
     public void deleteById(int commentId) {
         String sql = "DELETE FROM comments WHERE comment_id = ?";
         jdbcTemplate.update(sql, commentId);
+    }
+
+    @Override
+    public List<Comment> findByPostId(long postId) {
+        return List.of();
     }
 }

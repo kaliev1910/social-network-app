@@ -144,10 +144,10 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
               - column:
-                  name: follower_id
+                  name: user_id
                   type: int
               - column:
-                  name: followed_id
+                  name: follower_id
                   type: int
               - column:
                   name: created_at
@@ -155,15 +155,15 @@ databaseChangeLog:
                   defaultValueComputed: 'CURRENT_TIMESTAMP'
             foreignKeys:
               - foreignKey:
-                  name: fk_follower_id
-                  baseColumnName: follower_id
+                  name: fkf_user_id
+                  baseColumnName: user_id
                   baseTableName: subscriptions
                   referencedColumnName: user_id
                   referencedTableName: users
                   onDelete: CASCADE
               - foreignKey:
-                  name: fk_followed_id
-                  baseColumnName: followed_id
+                  name: fk_follower_id
+                  baseColumnName: follower_id
                   baseTableName: subscriptions
                   referencedColumnName: user_id
                   referencedTableName: users

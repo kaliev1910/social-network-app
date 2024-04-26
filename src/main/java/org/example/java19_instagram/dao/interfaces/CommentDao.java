@@ -11,4 +11,6 @@ public interface CommentDao {
     void save(Comment comment);
     void update(Comment comment);
     void deleteById(int commentId);
+
+    List<Comment> findByPostId(long postId);
 }

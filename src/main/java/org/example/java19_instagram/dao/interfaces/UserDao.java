@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UserDao {
     User findById(int userId);
     List<User> getAllUsers();
-    int save(User user);
+    int createUser(User user);
 
     Optional<List<User>> findUserLike(String username);
 
@@ -18,4 +18,6 @@ public interface UserDao {
     void deleteById(int userId);
 
     Optional<User> findByEmail(String email);
+
+    Optional<User> findByUsername(String username);
 }

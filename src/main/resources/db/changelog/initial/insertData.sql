@@ -17,7 +17,7 @@ VALUES (1, 2, 'Comment on Post 1 by User 2', '2024-04-26 08:05:00'),
        (3, 1, 'Comment on Post 3 by User 1', '2024-04-24 15:05:00');
 
 -- Заполнение таблицы "subscriptions"
-INSERT INTO subscriptions (follower_id, followed_id, created_at)
+INSERT INTO subscriptions (user_id, follower_id, created_at)
 VALUES (1, 2, '2024-04-26 08:10:00'),
        (2, 3, '2024-04-25 12:10:00'),
        (3, 1, '2024-04-24 15:10:00');

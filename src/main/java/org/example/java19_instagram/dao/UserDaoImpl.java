@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public int save(User user) {
+    public int createUser(User user) {
         String sql = "INSERT INTO users (username, email, password, avatar, name, enabled, bio) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         // Use KeyHolder to capture the generated key (usually user_id)
@@ -80,4 +80,13 @@ public class UserDaoImpl implements UserDao {
                 """;
         return Optional.ofNullable(DataAccessUtils.singleResult(jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), email)));
     }
+
+    @Override
+    public Optional<User> findByUsername(String email) {
+        String sql = """
+                select * from users where email = ?;
+                """;
+        return Optional.ofNullable(DataAccessUtils.singleResult(jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), email)));
+    }
+
 }
