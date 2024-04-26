@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class CommentController {
     private final CommentService commentService;
 
-    @PostMapping()
+    @PostMapping("addcomment")
     int addComment(@RequestBody CommentDto comment) {
 
         return commentService.addComment(comment);

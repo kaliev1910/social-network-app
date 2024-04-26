@@ -20,34 +20,36 @@
 
                             <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
                             <p class="text-dark mb-5">Please enter your information to register!</p>
-
                             <div data-mdb-input-init class="form-outline form-white mb-4">
-                                <input type="text" id="username" class="form-control form-control-lg" />
+                                <input type="email" id="email" class="form-control form-control-lg"/>
+                                <label class="form-label" for="email">Email</label>
+                            </div>
+                            <div data-mdb-input-init class="form-outline form-white mb-4">
+                                <input type="text" id="username" class="form-control form-control-lg"/>
                                 <label class="form-label" for="username">Username</label>
                             </div>
 
+
                             <div data-mdb-input-init class="form-outline form-white mb-4">
-                                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                                <label class="form-label" for="typeEmailX">Email</label>
+                                <input type="password" id="password" class="form-control form-control-lg"/>
+                                <label class="form-label" for="password">Password</label>
                             </div>
 
                             <div data-mdb-input-init class="form-outline form-white mb-4">
-                                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                                <label class="form-label" for="typePasswordX">Password</label>
-                            </div>
-
-                            <div data-mdb-input-init class="form-outline form-white mb-4">
-                                <input type="password" id="typeConfirmPasswordX" class="form-control form-control-lg" />
-                                <label class="form-label" for="typeConfirmPasswordX">Confirm Password</label>
+                                <input type="password" id="confirmPassword" class="form-control form-control-lg"/>
+                                <label class="form-label" for="confirmPassword">Confirm Password</label>
                             </div>
 
                             <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark btn-lg px-5"
-                                    type="submit">Register</button>
+                                    type="submit"><a href="register" methods="post"> Register</a>
+
+                            </button>
 
                         </div>
 
                         <div>
-                            <p class="mb-0">Already have an account? <a href="/login" class="text-dark fw-bold">Login</a>
+                            <p class="mb-0">Already have an account? <a href="/login"
+                                                                        class="text-dark fw-bold">Login</a>
                             </p>
                         </div>
 

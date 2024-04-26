@@ -16,6 +16,6 @@ public class PostController {
     @PostMapping("/image/upload")
     public String uploadImage(PostImageDto postImageDto) {
         postImageService.uploadImage(postImageDto);
-        return "redirect:profile";
+        return "redirect:/";
     }
 }

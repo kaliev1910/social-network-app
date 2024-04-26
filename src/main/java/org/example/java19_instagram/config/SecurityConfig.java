@@ -50,17 +50,17 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
 //                .sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(AbstractHttpConfigurer::disable)
-//                .formLogin(form -> form
-//                        .loginPage("/login")
-//                        .loginProcessingUrl("/login")
-//                        .defaultSuccessUrl("/profile")
-//                        .permitAll())
-//                .logout(logout -> logout
-//                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                        .permitAll())
+//                .formLogin(AbstractHttpConfigurer::disable)
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/profile")
+                        .permitAll())
+                .logout(logout -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .permitAll())
                 .authorizeHttpRequests(authz -> authz
-//                        .requestMatchers("/profile").authenticated()
+                        .requestMatchers("/profile").authenticated()
 //                        .requestMatchers(HttpMethod.GET, "/vacancy").hasRole(AccountType.EMPLOYER.getValue())
 //                        .requestMatchers(HttpMethod.GET, "/resumes").hasRole(AccountType.EMPLOYER.getValue())
 //                        .requestMatchers(HttpMethod.GET, "/resume/**").authenticated()

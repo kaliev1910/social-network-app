@@ -28,7 +28,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentDto> getComments(long postId) {
+    public List<CommentDto> getPostComments(long postId) {
         List<Comment> comments = commentDao.findByPostId(postId);
         return comments.stream()
                 .map(this::toDto)

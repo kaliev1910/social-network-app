@@ -21,11 +21,11 @@ public class PostImageService {
     public void uploadImage(PostImageDto postImageDto) {
         postImageDao.delete(postImageDto.getPostId());
         String fileName = fileService.saveUploadedFile(postImageDto.getFile(), SUB_DIR);
-        PostImage ui = PostImage.builder()
+        PostImage pi = PostImage.builder()
                 .postId(postImageDto.getPostId())
                 .fileName(fileName)
                 .build();
-        postImageDao.save(ui);
+        postImageDao.save(pi);
     }
 
 
