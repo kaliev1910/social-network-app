@@ -1,9 +1,10 @@
-package org.example.java19_instagram.service;
+package org.example.java19_instagram.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.example.java19_instagram.dao.PostImageDao;
 import org.example.java19_instagram.dto.PostImageDto;
 import org.example.java19_instagram.models.PostImage;
+import org.example.java19_instagram.service.interfaces.FileService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,8 @@
-package org.example.java19_instagram.service;
+package org.example.java19_instagram.service.impl;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.example.java19_instagram.service.interfaces.FileService;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
