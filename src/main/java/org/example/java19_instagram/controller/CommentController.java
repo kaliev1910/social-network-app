@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 @RequiredArgsConstructor
 public class CommentController {
+
     private final CommentService commentService;
 
     @PostMapping("addcomment")

@@ -22,12 +22,12 @@
                             <p class="text-dark mb-5">Please enter your login and password!</p>
 
                             <div data-mdb-input-init class="form-outline form-white mb-4">
-                                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                                <input type="email" id="typeEmailX"  name="username" class="form-control form-control-lg" />
                                 <label class="form-label" for="typeEmailX">Email</label>
                             </div>
 
                             <div data-mdb-input-init class="form-outline form-white mb-4">
-                                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                                <input type="password" id="typePasswordX"  name="password" class="form-control form-control-lg" />
                                 <label class="form-label" for="typePasswordX">Password</label>
                             </div>
 

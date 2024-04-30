@@ -53,7 +53,9 @@ public class MainController {
         return "redirect:/register?success";
     }
     @GetMapping("/")
-    public String showFeedPage() {
+    public String showFeedPage(Model model, Authentication authentication) {
+        model.addAttribute("username", authentication.getName());
+        model.addAttribute("user", userService.getUserByUsername(authentication.getName()));
         return "/index";
     }
 
